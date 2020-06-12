@@ -5,14 +5,13 @@
  */
 package nhom19;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.awt.HeadlessException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import static nhom19.BaoTriRuouFrame.deleteRuouFromDB;
 
 /**
  *
@@ -25,6 +24,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
      */
     
     
+    ConnectDB con = new ConnectDB();
     public QuanLyTaiKhoan() {
         initComponents();
         loadTable(getData());
@@ -33,13 +33,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
         jTable1.setModel(new TaiKhoanTable(list));
     }
     public ArrayList<TaiKhoan> getData() {
-        ArrayList<TaiKhoan> dsTk = new ArrayList<TaiKhoan>();
+        ArrayList<TaiKhoan> dsTk = new ArrayList<>();
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "select * from TaiKhoan";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -48,7 +43,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                 t = new TaiKhoan(rs.getString("maTaiKhoan"), rs.getString("tenTaiKhoan"), rs.getString("matKhau"));
                 dsTk.add(t);
             }
-        }catch(Exception e) {
+        }catch(SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
         return dsTk;
@@ -70,60 +65,45 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
         
         return new TaiKhoan(maTaiKhoan, tenTaiKhoan, matKhau);
     }
-    static void insertTaiKhoanIntoDB(String maTaiKhoan, String tenTaiKhoan, String matKhau){
+    void insertTaiKhoanIntoDB(String maTaiKhoan, String tenTaiKhoan, String matKhau){
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "insert into TaiKhoan values(?, ?, ?)";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst = con.preparedStatement(query);
             
             pst.setString(1, maTaiKhoan);
             pst.setString(2, tenTaiKhoan);
             pst.setString(3, matKhau);
             
             pst.executeUpdate();
-        }catch(Exception e) {
+        }catch(SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    static void updateTaiKhoan(String maTaiKhoan, String tenTaiKhoan, String matKhau){
+    void updateTaiKhoan(String maTaiKhoan, String tenTaiKhoan, String matKhau){
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "update TaiKhoan set tenTaiKhoan=?, matKhau=? where maTaiKhoan=?";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst = con.preparedStatement(query);
             
             pst.setString(3, maTaiKhoan);
             pst.setString(1, tenTaiKhoan);
             pst.setString(2, matKhau);
             
             pst.executeUpdate();
-        }catch(Exception e) {
+        }catch(SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    static void deleteTaiKhoan (String maRuou){
+    void deleteTaiKhoan (String maRuou){
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "delete from TaiKhoan where maTaiKhoan=?";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst = con.preparedStatement(query);
             
             
             pst.setString(1, maRuou);
             
             
             pst.executeUpdate();
-        }catch(Exception e) {
+        }catch(SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
@@ -305,7 +285,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                 loadTable(getData());
                 clearTextDetail();
             }
-        } catch (Exception ex) {            
+        } catch (HeadlessException ex) {            
             JOptionPane.showMessageDialog(null, "Không xoá duoc "+ ex.toString() );
         }
     }//GEN-LAST:event_jButton3ActionPerformed

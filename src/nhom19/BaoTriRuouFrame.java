@@ -14,9 +14,7 @@ import javax.swing.JOptionPane;
  * @author Administrator
  */
 public class BaoTriRuouFrame extends javax.swing.JFrame {
-
-    
-    
+    ConnectDB con = new ConnectDB();
     public BaoTriRuouFrame() {
         initComponents();
         loadTable(getData());
@@ -28,11 +26,6 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
     public ArrayList<Ruou> getData() {
         ArrayList<Ruou> dsRuou = new ArrayList<Ruou>();
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "select * from Ruou";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -82,15 +75,10 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
         return new Ruou(maRuou, tenRuou, donGia, dungTich, nongDo, xuatXu, tinhTrang, kieuCach, matl);
     }
     
-    static void insertRuouIntoDB(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
+    void insertRuouIntoDB(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
          try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "insert into RUOU values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst = con.preparedStatement(query);
             
             pst.setString(1, maRuou);
             pst.setString(2, tenRuou);
@@ -107,15 +95,10 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    static void updateRuou(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
+    void updateRuou(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "update Ruou set tenRuou=?, donGia=?, dungTich=?, nongDo=?, xuatXu=?, tinhTrang=?, kieuCach=?, maTheLoai=? where maRuou=?";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst = con.preparedStatement(query);
             
             pst.setString(9, maRuou);
             pst.setString(1, tenRuou);
@@ -132,15 +115,10 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    static void deleteRuouFromDB(String maRuou){
+    void deleteRuouFromDB(String maRuou){
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "delete from Ruou where maRuou=?";
-            PreparedStatement pst = con.prepareStatement(query);
+            PreparedStatement pst = con.preparedStatement(query);
             
             
             pst.setString(1, maRuou);
@@ -424,11 +402,6 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
         String maRuou = jTextField1.getText();
         ArrayList<Ruou> dsRuou = new ArrayList<Ruou>();
         try{
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url = "jdbc:derby://localhost:1527/QLRuou";
-            String user = "nhom19";
-            String password = "1";
-            Connection con = DriverManager.getConnection(url, user, password );
             String query = "select * from Ruou where maRuou= '"+ maRuou +"' ";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
