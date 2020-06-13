@@ -6,6 +6,7 @@
 package nhom19;
 
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,10 +28,14 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
     ConnectDB con = new ConnectDB();
     public QuanLyTaiKhoan() {
         initComponents();
+        setIcon();
         loadTable(getData());
     }
     public void loadTable(ArrayList<TaiKhoan> list) {
         jTable1.setModel(new TaiKhoanTable(list));
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
     }
     public ArrayList<TaiKhoan> getData() {
         ArrayList<TaiKhoan> dsTk = new ArrayList<>();
@@ -210,7 +215,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,10 +240,10 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                         .addGap(185, 185, 185)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(26, 26, 26)
                         .addComponent(jButton6)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())

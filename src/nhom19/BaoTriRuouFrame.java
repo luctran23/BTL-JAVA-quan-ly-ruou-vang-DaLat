@@ -1,6 +1,7 @@
 
 package nhom19;
 
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,12 +18,15 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
     ConnectDB con = new ConnectDB();
     public BaoTriRuouFrame() {
         initComponents();
+        setIcon();
         loadTable(getData());
     }
     public void loadTable(ArrayList<Ruou> list) {
         jTable1.setModel(new RuouTable(list));
     }
-    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
+    }
     public ArrayList<Ruou> getData() {
         ArrayList<Ruou> dsRuou = new ArrayList<Ruou>();
         try{
