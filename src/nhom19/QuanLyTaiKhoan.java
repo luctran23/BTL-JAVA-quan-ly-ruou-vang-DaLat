@@ -93,13 +93,14 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    void deleteTaiKhoan (String maRuou){
+    void deleteTaiKhoan (String maTk){
         try{
+            
             String query = "delete from TaiKhoan where maTaiKhoan=?";
             PreparedStatement pst = con.preparedStatement(query);
             
             
-            pst.setString(1, maRuou);
+            pst.setString(1, maTk);
             
             
             pst.executeUpdate();
@@ -131,6 +132,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý tài khoản");
@@ -183,8 +185,25 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
         jLabel4.setText("Tìm kiếm");
 
         jButton4.setText("Tìm kiếm");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Đăng xuất");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Back");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +237,10 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton3)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton6)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -248,7 +270,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
                 .addGap(20, 20, 20))
         );
 
@@ -289,6 +312,34 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Không xoá duoc "+ ex.toString() );
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        new DangNhapFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String maTk = jTextField4.getText();
+        ArrayList<TaiKhoan> dsTk = new ArrayList<TaiKhoan>();
+        try{
+            String query = "select * from TaiKhoan where maTaiKhoan= '"+ maTk +"' ";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            TaiKhoan tk;
+            while(rs.next()) {
+                tk = new TaiKhoan(rs.getString("maTaiKhoan"), rs.getString("tenTaiKhoan"), rs.getString("matKhau"));
+                dsTk.add(tk);
+            }
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        loadTable(dsTk);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        new QLRuouFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -331,6 +382,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

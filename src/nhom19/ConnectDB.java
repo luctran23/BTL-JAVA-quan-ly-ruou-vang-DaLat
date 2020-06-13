@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package nhom19;
 
 import java.sql.Connection;
@@ -18,12 +14,11 @@ public class ConnectDB {
     ResultSet rs = null;
     Connection cnn = null;
 
-    String uRl = "jdbc:derby://localhost:1527/QLRuou";//;create=true";
-    String userName = "nhom20";// chema mặc định
+    String uRl = "jdbc:derby://localhost:1527/QLRuou";
+    String userName = "nhom19";
     String pas = "1";
 
-    //CREATE SCHEMA <schema name>
-    //jdbc:derby://localhost:1527/ktpm3 [ABC on ABC]
+    
     public ConnectDB() {
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();

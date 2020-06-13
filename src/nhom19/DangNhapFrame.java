@@ -38,9 +38,9 @@ public class DangNhapFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,9 +81,9 @@ public class DangNhapFrame extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(27, 27, 27)
                         .addComponent(jButton2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)))
                 .addContainerGap(54, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -119,7 +119,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
             String query = "select * from TaiKhoan where tenTaiKhoan=? and matKhau=?";
             PreparedStatement pst = con.preparedStatement(query);
             pst.setString(1, jTextField1.getText());
-            pst.setString(2, jTextField2.getText());
+            pst.setString(2, jPasswordField1.getText());
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
                 new QLRuouFrame().setVisible(true);
@@ -128,7 +128,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(null, "Tên đăng nhập hoặc mật khẩu không hợp lệ");
                 jTextField1.setText("");
-                jTextField2.setText("");
+                jPasswordField1.setText("");
             }
         }catch(Exception e ) {
             JOptionPane.showMessageDialog(null, e);
@@ -177,7 +177,7 @@ public class DangNhapFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
