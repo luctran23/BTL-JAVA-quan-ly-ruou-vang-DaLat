@@ -199,7 +199,7 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
-        btnRefresh.setText("Refresh");
+        btnRefresh.setText("Làm mới");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -213,7 +213,7 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Back");
+        jButton6.setText("Trở về");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);

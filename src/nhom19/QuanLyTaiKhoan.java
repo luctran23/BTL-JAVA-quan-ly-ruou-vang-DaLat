@@ -203,7 +203,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Back");
+        jButton6.setText("Trở về");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
