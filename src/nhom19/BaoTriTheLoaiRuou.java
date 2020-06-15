@@ -1,5 +1,7 @@
 package nhom19;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,6 +22,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
         initComponents();
         setTitle("Bảo trì thể loại rượu");
         setIcon();
+        jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        jTable1.getTableHeader().setForeground(Color.BLACK);
         loadTable(getData(false));
     }
 
@@ -152,6 +156,7 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 51, 102));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -159,6 +164,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +173,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Sửa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +182,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Xóa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +203,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
 
         jLabel4.setText("Tìm kiếm tên thể loại");
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 255));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Tìm");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,6 +212,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
+        btnRefresh.setBackground(new java.awt.Color(102, 102, 255));
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setText("Làm mới");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +221,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 255));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Đăng xuất");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,6 +230,8 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(102, 102, 255));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Trở về");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
