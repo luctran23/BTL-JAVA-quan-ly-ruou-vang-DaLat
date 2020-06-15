@@ -15,7 +15,7 @@ public class ConnectDB {
     Connection cnn = null;
 
     String uRl = "jdbc:derby://localhost:1527/QLRuou";
-    String userName = "nhom20";
+    String userName = "nhom19";
     String pas = "1";
 
     
