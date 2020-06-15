@@ -471,7 +471,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            String query = "select * from TheLoai where matheloai=?";
+            String query = "select * from TheLoai where matl=?";
             PreparedStatement pst = con.preparedStatement(query);
             pst.setString(1, jTextField10.getText());
             ResultSet rs = pst.executeQuery();
