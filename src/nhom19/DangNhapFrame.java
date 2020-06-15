@@ -52,6 +52,8 @@ public class DangNhapFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Mật khẩu");
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Đăng nhập");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +61,8 @@ public class DangNhapFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Hủy bỏ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

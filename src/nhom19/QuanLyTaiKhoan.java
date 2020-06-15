@@ -5,6 +5,8 @@
  */
 package nhom19;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.PreparedStatement;
@@ -29,6 +31,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
     public QuanLyTaiKhoan() {
         initComponents();
         setIcon();
+        jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        jTable1.getTableHeader().setForeground(Color.BLACK);
         loadTable(getData());
     }
     public void loadTable(ArrayList<TaiKhoan> list) {
@@ -159,6 +163,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 51, 102));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -166,6 +171,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,6 +180,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Sửa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +189,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Xóa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +200,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
 
         jLabel4.setText("Tìm kiếm");
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 255));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Tìm kiếm");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +209,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 255));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Đăng xuất");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,6 +218,8 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(102, 102, 255));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Trở về");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,7 +251,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                                     .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                                 .addComponent(jButton5))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(185, 185, 185)
@@ -246,7 +263,7 @@ public class QuanLyTaiKhoan extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

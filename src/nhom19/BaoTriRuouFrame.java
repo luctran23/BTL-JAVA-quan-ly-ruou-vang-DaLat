@@ -1,6 +1,8 @@
 
 package nhom19;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +21,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
     public BaoTriRuouFrame() {
         initComponents();
         setIcon();
+        jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        jTable1.getTableHeader().setForeground(Color.BLACK);
         loadTable(getData());
     }
     public void loadTable(ArrayList<Ruou> list) {
@@ -207,6 +211,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 51, 102));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -214,6 +220,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,6 +229,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Sửa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +238,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Xóa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +249,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Mã thể loại");
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 255));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Đăng xuất");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +258,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setBackground(new java.awt.Color(102, 102, 255));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Tìm kiếm");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,6 +267,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setBackground(new java.awt.Color(102, 102, 255));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Trở về");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,6 +276,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setBackground(new java.awt.Color(102, 102, 255));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Thêm thể loại");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +287,8 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã rượu", "Tên rượu", "Dung tích" }));
 
+        jButton8.setBackground(new java.awt.Color(102, 102, 255));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Làm mới");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -449,7 +471,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            String query = "select * from TheLoai where matheloai=?";
+            String query = "select * from TheLoai where matl=?";
             PreparedStatement pst = con.preparedStatement(query);
             pst.setString(1, jTextField10.getText());
             ResultSet rs = pst.executeQuery();

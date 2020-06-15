@@ -5,7 +5,9 @@
  */
 package nhom19;
 
+import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -20,10 +22,36 @@ public class QLRuouFrame extends javax.swing.JFrame {
     public QLRuouFrame() {
         initComponents();
         setIcon();
+        addIcon();
         
     }
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
+    }
+    private void addIcon() {
+        ImageIcon myImg = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon2.png")));
+        Image img1 = myImg.getImage();
+        Image mySymbol = img1.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(mySymbol);
+        jButton1.setIcon(icon);
+        
+        ImageIcon myImg2 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon3.png")));
+        Image img2 = myImg2.getImage();
+        Image mySymbol2 = img2.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon icon2 = new ImageIcon(mySymbol2);
+        jButton4.setIcon(icon2);
+        
+        ImageIcon myImg3 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon4.png")));
+        Image img3 = myImg3.getImage();
+        Image mySymbol3 = img3.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon icon3 = new ImageIcon(mySymbol3);
+        jButton2.setIcon(icon3);
+        
+        ImageIcon myImg4 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon5.png")));
+        Image img4 = myImg4.getImage();
+        Image mySymbol4 = img4.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+        ImageIcon icon4 = new ImageIcon(mySymbol4);
+        jButton3.setIcon(icon4);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +71,10 @@ public class QLRuouFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Màn hình chính");
 
-        jButton1.setText("Bảo trì rượu");
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("   Bảo trì rượu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -53,6 +84,9 @@ public class QLRuouFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Quản lý rượu vang Đà Lạt");
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Bảo trì thể loại rượu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +94,9 @@ public class QLRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 102, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Thoát");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +104,9 @@ public class QLRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(102, 102, 255));
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Quản lý tài khoản");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,13 +125,13 @@ public class QLRuouFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
