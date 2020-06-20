@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import static nhom19.AddTheLoaiRuou.jTextField1;
-import static nhom19.AddTheLoaiRuou.jTextField2;
+
 
 public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
 
@@ -409,13 +408,13 @@ public class BaoTriTheLoaiRuou extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddTheLoaiRuou.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddTheLoaiRuou.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddTheLoaiRuou.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddTheLoaiRuou.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            System.out.println(ex);
         }
         //</editor-fold>
 
