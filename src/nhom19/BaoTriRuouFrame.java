@@ -39,7 +39,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(query);
             Ruou r;
             while(rs.next()) {
-                r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"),rs.getString("dungTich"),rs.getString("nongDo"),rs.getString("xuatXu"),rs.getString("tinhTrang"),rs.getString("kieuCach"),rs.getString("maTheLoai"));
+                r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"),rs.getString("dungTich"),rs.getString("nongDo"),rs.getString("xuatXu"),rs.getString("tinhTrang"),rs.getString("kieuCach"),rs.getString("matl"));
                 dsRuou.add(r);
             }
         }catch(Exception e) {
@@ -106,7 +106,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
     }
     void updateRuou(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
         try{
-            String query = "update Ruou set tenRuou=?, donGia=?, dungTich=?, nongDo=?, xuatXu=?, tinhTrang=?, kieuCach=?, maTheLoai=? where maRuou=?";
+            String query = "update Ruou set tenRuou=?, donGia=?, dungTich=?, nongDo=?, xuatXu=?, tinhTrang=?, kieuCach=?, matl=? where maRuou=?";
             PreparedStatement pst = con.preparedStatement(query);
             
             pst.setString(9, maRuou);
@@ -507,7 +507,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(query);
                 Ruou r;
                 while (rs.next()) {
-                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("maTheLoai"));
+                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"));
                     dsRuou.add(r);
                 }
             } catch (Exception e) {
@@ -522,7 +522,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(query);
                 Ruou r;
                 while (rs.next()) {
-                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("maTheLoai"));
+                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"));
                     dsRuou.add(r);
                 }
             } catch (Exception e) {
@@ -537,7 +537,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(query);
                 Ruou r;
                 while (rs.next()) {
-                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("maTheLoai"));
+                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"));
                     dsRuou.add(r);
                 }
             } catch (Exception e) {
