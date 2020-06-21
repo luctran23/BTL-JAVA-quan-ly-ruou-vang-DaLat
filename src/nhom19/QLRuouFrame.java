@@ -246,7 +246,7 @@ public class QLRuouFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnQLPXuatActionPerformed
 
     private void btnQLPNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLPNhapActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnQLPNhapActionPerformed
 
     /**
