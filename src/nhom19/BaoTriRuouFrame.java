@@ -39,7 +39,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(query);
             Ruou r;
             while(rs.next()) {
-                r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"),rs.getString("dungTich"),rs.getString("nongDo"),rs.getString("xuatXu"),rs.getString("tinhTrang"),rs.getString("kieuCach"),rs.getString("matl"));
+                r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"),rs.getString("dungTich"),rs.getString("nongDo"),rs.getString("xuatXu"),rs.getString("tinhTrang"),rs.getString("kieuCach"),rs.getString("matl"), rs.getString("maNl"), rs.getString("maCt"), rs.getString("soLuongCon"));
                 dsRuou.add(r);
             }
         }catch(Exception e) {
@@ -69,6 +69,9 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
         jTextField8.setText(r.getTinhTrang().trim());
         jTextField9.setText(r.getKieuCach().trim());
         jTextField10.setText(r.getMaTheLoai().trim());
+        jTextField11.setText(r.getMaNl().trim());
+        jTextField12.setText(r.getMaCt().trim());
+        jTextField13.setText(r.getSoLuongCon().trim());
     }
     
     private Ruou getRuouDetail() {
@@ -81,12 +84,15 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
         String tinhTrang = jTextField8.getText().trim();
         String kieuCach = jTextField9.getText().trim();
         String matl = jTextField10.getText().trim();
-        return new Ruou(maRuou, tenRuou, donGia, dungTich, nongDo, xuatXu, tinhTrang, kieuCach, matl);
+        String maNl = jTextField11.getText().trim();
+        String maCt = jTextField12.getText().trim();
+        String soLuongCon = jTextField13.getText().trim();
+        return new Ruou(maRuou, tenRuou, donGia, dungTich, nongDo, xuatXu, tinhTrang, kieuCach, matl, maNl, maCt, soLuongCon);
     }
     
-    void insertRuouIntoDB(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
+    void insertRuouIntoDB(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai, String maNl, String maCt, String soLuongCon){
          try{
-            String query = "insert into RUOU values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into RUOU values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pst = con.preparedStatement(query);
             
             pst.setString(1, maRuou);
@@ -98,18 +104,21 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             pst.setString(7, tinhTrang);
             pst.setString(8, kieuCach);
             pst.setString(9, maTheLoai);
+            pst.setString(10, maNl);
+            pst.setString(11, maCt);
+            pst.setString(12, soLuongCon);
             
             pst.executeUpdate();
         }catch(Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    void updateRuou(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai){
+    void updateRuou(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai, String maNl, String maCt, String soLuongCon){
         try{
-            String query = "update Ruou set tenRuou=?, donGia=?, dungTich=?, nongDo=?, xuatXu=?, tinhTrang=?, kieuCach=?, matl=? where maRuou=?";
+            String query = "update Ruou set tenRuou=?, donGia=?, dungTich=?, nongDo=?, xuatXu=?, tinhTrang=?, kieuCach=?, matl=?, maNl=?, maCt=?, soLuongCon=? where maRuou=?";
             PreparedStatement pst = con.preparedStatement(query);
             
-            pst.setString(9, maRuou);
+            pst.setString(12, maRuou);
             pst.setString(1, tenRuou);
             pst.setString(2, donGia);
             pst.setString(3, dungTich);
@@ -118,6 +127,9 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             pst.setString(6, tinhTrang);
             pst.setString(7, kieuCach);
             pst.setString(8, maTheLoai);
+            pst.setString(9, maNl);
+            pst.setString(10, maCt);
+            pst.setString(11, soLuongCon);
             
             pst.executeUpdate();
         }catch(Exception e) {
@@ -178,6 +190,12 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton8 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bảo trì rượu");
@@ -296,6 +314,12 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setText("Mã nguyên liệu");
+
+        jLabel12.setText("Mã công thức");
+
+        jLabel13.setText("Số lượng còn");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -303,11 +327,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -353,21 +373,34 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                                                 .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addComponent(jTextField10)))))
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField11)
+                            .addComponent(jTextField12)
+                            .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(67, 67, 67)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(230, 230, 230))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1172, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -411,15 +444,21 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel7)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel8)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel9)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -448,7 +487,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Ruou newRuou = getRuouDetail();
-        updateRuou(newRuou.getMaRuou(), newRuou.getTenRuou(), newRuou.getDonGia(), newRuou.getDungTich(), newRuou.getNongDo(), newRuou.getXuatXu(), newRuou.getTinhTrang(), newRuou.getKieuCach(), newRuou.getMaTheLoai());
+        updateRuou(newRuou.getMaRuou(), newRuou.getTenRuou(), newRuou.getDonGia(), newRuou.getDungTich(), newRuou.getNongDo(), newRuou.getXuatXu(), newRuou.getTinhTrang(), newRuou.getKieuCach(), newRuou.getMaTheLoai(), newRuou.getMaNl(), newRuou.getMaCt(), newRuou.getSoLuongCon());
         loadTable(getData());
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -476,7 +515,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
                 Ruou ruou = getRuouDetail();
-                insertRuouIntoDB(ruou.getMaRuou(), ruou.getTenRuou().trim(), ruou.getDonGia(), ruou.getDungTich(), ruou.getNongDo(), ruou.getXuatXu(), ruou.getTinhTrang(), ruou.getKieuCach(), ruou.getMaTheLoai());
+                insertRuouIntoDB(ruou.getMaRuou(), ruou.getTenRuou().trim(), ruou.getDonGia(), ruou.getDungTich(), ruou.getNongDo(), ruou.getXuatXu(), ruou.getTinhTrang(), ruou.getKieuCach(), ruou.getMaTheLoai(), ruou.getMaNl(), ruou.getMaCt(), ruou.getSoLuongCon());
                 loadTable(getData());
             }
             else {
@@ -507,7 +546,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(query);
                 Ruou r;
                 while (rs.next()) {
-                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"));
+                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"), rs.getString("maNl"), rs.getString("maCt"), rs.getString("soLuongCon"));
                     dsRuou.add(r);
                 }
             } catch (Exception e) {
@@ -522,7 +561,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(query);
                 Ruou r;
                 while (rs.next()) {
-                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"));
+                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"), rs.getString("maNl"), rs.getString("maCt"), rs.getString("soLuongCon"));
                     dsRuou.add(r);
                 }
             } catch (Exception e) {
@@ -537,7 +576,7 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery(query);
                 Ruou r;
                 while (rs.next()) {
-                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"));
+                    r = new Ruou(rs.getString("maRuou"), rs.getString("tenRuou"), rs.getString("donGia"), rs.getString("dungTich"), rs.getString("nongDo"), rs.getString("xuatXu"), rs.getString("tinhTrang"), rs.getString("kieuCach"), rs.getString("matl"), rs.getString("maNl"), rs.getString("maCt"), rs.getString("soLuongCon"));
                     dsRuou.add(r);
                 }
             } catch (Exception e) {
@@ -614,6 +653,9 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -626,6 +668,9 @@ public class BaoTriRuouFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     public static javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

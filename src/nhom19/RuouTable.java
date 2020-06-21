@@ -6,8 +6,8 @@ import javax.swing.table.AbstractTableModel;
 
 
 public class RuouTable extends AbstractTableModel {
-    private String name[] = {"Mã rượu", "Tên rượu", "Đơn giá","Dung tích", "Nồng độ", "Xuất xứ", "Tình trạng", "Kiểu cách", "Mã thể loại"};
-    private Class classes[] = {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class };
+    private String name[] = {"Mã rượu", "Tên rượu", "Đơn giá","Dung tích", "Nồng độ", "Xuất xứ", "Tình trạng", "Kiểu cách", "Mã thể loại", "Mã nguyên liệu", "Mã công thức", "Số lượng còn"};
+    private Class classes[] = {String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class };
     ArrayList<Ruou> dsRuou = new ArrayList<Ruou>();
     
     public RuouTable(ArrayList<Ruou> dsRuou) {
@@ -52,6 +52,15 @@ public class RuouTable extends AbstractTableModel {
         }
         if(columnIndex == 8){
             return dsRuou.get(rowIndex).getMaTheLoai();
+        }
+        if(columnIndex == 9){
+            return dsRuou.get(rowIndex).getMaNl();
+        }
+        if(columnIndex == 10){
+            return dsRuou.get(rowIndex).getMaCt();
+        }
+        if(columnIndex == 11){
+            return dsRuou.get(rowIndex).getSoLuongCon();
         }
         return null;
     }

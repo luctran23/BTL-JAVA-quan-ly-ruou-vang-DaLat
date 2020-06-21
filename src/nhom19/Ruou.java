@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 
 public class Ruou implements Serializable {
-	private String maRuou, tenRuou, donGia, dungTich, nongDo, xuatXu, tinhTrang, kieuCach, maTheLoai;
+	private String maRuou, tenRuou, donGia, dungTich, nongDo, xuatXu, tinhTrang, kieuCach, maTheLoai, maNl, maCt, soLuongCon;
 
     
 
@@ -80,6 +80,30 @@ public class Ruou implements Serializable {
         public void setMaTheLoai(String maTheLoai) {
             this.maTheLoai = maTheLoai;
         }
+
+        public String getMaNl() {
+            return maNl;
+        }
+
+        public void setMaNl(String maNl) {
+            this.maNl = maNl;
+        }
+
+        public String getMaCt() {
+            return maCt;
+        }
+
+        public void setMaCt(String maCt) {
+            this.maCt = maCt;
+        }
+
+        public String getSoLuongCon() {
+            return soLuongCon;
+        }
+
+        public void setSoLuongCon(String soLuongCon) {
+            this.soLuongCon = soLuongCon;
+        }
         
 	public Ruou() {
 	}
@@ -98,6 +122,21 @@ public class Ruou implements Serializable {
                 this.maTheLoai = matl;
 	}
 
+    public Ruou(String maRuou, String tenRuou, String donGia, String dungTich, String nongDo, String xuatXu, String tinhTrang, String kieuCach, String maTheLoai, String maNl, String maCt, String soLuongCon) {
+        this.maRuou = maRuou;
+        this.tenRuou = tenRuou;
+        this.donGia = donGia;
+        this.dungTich = dungTich;
+        this.nongDo = nongDo;
+        this.xuatXu = xuatXu;
+        this.tinhTrang = tinhTrang;
+        this.kieuCach = kieuCach;
+        this.maTheLoai = maTheLoai;
+        this.maNl = maNl;
+        this.maCt = maCt;
+        this.soLuongCon = soLuongCon;
+    }
+        
 	private String getLastNameOfName() {
 		String str = getMaRuou();
 		int i = str.length() - 1;

@@ -8,6 +8,7 @@ package nhom19;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class QuanLyCTPNhap extends javax.swing.JFrame {
     ConnectDB con = new ConnectDB();
     public QuanLyCTPNhap() {
         initComponents();
-//        setIcon();
+        setIcon();
         jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         jTable1.getTableHeader().setForeground(Color.BLACK);
         getListSoPN();
@@ -35,9 +36,9 @@ public class QuanLyCTPNhap extends javax.swing.JFrame {
    public void loadTable(ArrayList<CTPNhap> list) {
         jTable1.setModel(new CTPNhapTable(list));
     }
-//    private void setIcon() {
-//        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
-//    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
+    }
 
     private void getListSoPN() {
         try {

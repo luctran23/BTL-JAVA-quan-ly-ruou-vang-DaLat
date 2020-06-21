@@ -8,6 +8,7 @@ package nhom19;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
     ConnectDB con = new ConnectDB();
      public QuanLyPhieuNhap() {
         initComponents();
-//        setIcon();
+        setIcon();
         jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         jTable1.getTableHeader().setForeground(Color.BLACK);
         loadTable(getData());
@@ -32,9 +33,9 @@ public class QuanLyPhieuNhap extends javax.swing.JFrame {
     public void loadTable(ArrayList<PhieuNhap> list) {
         jTable1.setModel(new PhieuNhapTable(list));
     }
-//    private void setIcon() {
-//        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
-//    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
+    }
 
     public ArrayList<PhieuNhap> getData() {
         ArrayList<PhieuNhap> dspn = new ArrayList<>();
