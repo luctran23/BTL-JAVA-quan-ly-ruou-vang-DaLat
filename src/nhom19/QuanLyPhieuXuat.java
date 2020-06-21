@@ -26,7 +26,7 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
 
     public QuanLyPhieuXuat() {
         initComponents();
-//        setIcon();
+        setIcon();
         jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         jTable1.getTableHeader().setForeground(Color.BLACK);
         loadTable(getData());
@@ -35,9 +35,9 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
     public void loadTable(ArrayList<PhieuXuat> list) {
         jTable1.setModel(new PhieuXuatTable(list));
     }
-//    private void setIcon() {
-//        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
-//    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.png")));
+    }
 
     public ArrayList<PhieuXuat> getData() {
         ArrayList<PhieuXuat> dspx = new ArrayList<>();
@@ -89,6 +89,7 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý phiếu xuất");
 
         jLabel1.setText("Số phiếu xuất");
 
@@ -107,6 +108,7 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setSelectionBackground(new java.awt.Color(255, 51, 102));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -114,6 +116,8 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        btnThem.setBackground(new java.awt.Color(102, 102, 255));
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +125,8 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
             }
         });
 
+        btnTrove.setBackground(new java.awt.Color(102, 102, 255));
+        btnTrove.setForeground(new java.awt.Color(255, 255, 255));
         btnTrove.setText("Trở về");
         btnTrove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +134,8 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
             }
         });
 
+        btnSua.setBackground(new java.awt.Color(102, 102, 255));
+        btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +143,8 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
             }
         });
 
+        btnDangXuat.setBackground(new java.awt.Color(102, 102, 255));
+        btnDangXuat.setForeground(new java.awt.Color(255, 255, 255));
         btnDangXuat.setText("Đăng xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +152,8 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
             }
         });
 
+        btnXoa.setBackground(new java.awt.Color(102, 102, 255));
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +168,10 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -203,7 +219,8 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtNgayXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnSua))
+                                .addComponent(btnSua)
+                                .addComponent(btnDangXuat))
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -211,10 +228,7 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnXoa))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnTrove)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnDangXuat))
+                    .addComponent(btnTrove)
                     .addComponent(btnThem))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,6 +236,7 @@ public class QuanLyPhieuXuat extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTroveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTroveActionPerformed
